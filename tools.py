@@ -60,13 +60,13 @@ def show_word_linear(vectorizer,model,le,des_file = None,exclusive=False,norm=Fa
     vocab_num = len(vectorizer.vocabulary_)
     stopwords = set()
     model_coef = model.coef_
+    if norm:
+        for row in range(np.shape(model_coef)[0]):
+            model_coef[row] = (model_coef[row] - np.mean(model_coef[row])) / np.std(model_coef[row])
     if exclusive:
         for col in range(np.shape(model_coef)[1]):
             minor_class = np.where(model_coef[:,col]!=max(model_coef[:,col]))[0]
             model_coef[minor_class,col] = 0
-    if norm:
-         for row in range(np.shape(model_coef)[0]):
-            model_coef[row] = (model_coef[row] - np.mean(model_coef[row])) / np.std(model_coef[row])
     if des_file:
         if os.path.exists(des_file):
             os.remove(des_file)
