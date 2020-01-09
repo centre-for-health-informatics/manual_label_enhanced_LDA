@@ -23,7 +23,7 @@ except:
 ### Methode overview
 ![Getting Started](./whole_pipeline.png)
 
-###Data pre-processing
+### Data pre-processing
 To prepare the text for analysis, we conducted several standard preprocessing steps, using the spaCy and sklearn python package. We converted all of the text to lowercase, removed the standard English stopwords defined by sklearn, plus an additional set of corpus-specific stopwords (see supplementary information), and performed lemmatization.
 Code is in pre-processing jupyter notebook
 
